@@ -7,7 +7,7 @@
 body {
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(135deg, #ff1b6d 0%, #ff6b9d 25%, #c41e3a 50%, #ff1b6d 75%, #ff6b9d 100%);
+    background: linear-gradient(135deg, #000000 0%, #000000 25%, #000000 50%, #000000 75%, #000000 100%);
     background-size: 400% 400%;
     animation: gradientShift 15s ease infinite;
     display: flex;
@@ -33,7 +33,7 @@ canvas {
     display: block;
     width: 100%;
     height: 100%;
-    background: radial-gradient(circle at 50% 50%, rgba(255, 50, 150, 0.2), transparent);
+    background: radial-gradient(circle at 50% 50%, rgba(255, 55, 152, 0.2), transparent);
 }
 
 .menu-overlay {
@@ -85,7 +85,7 @@ canvas {
     border: none;
     padding: 14px 28px;
     border-radius: 999px;
-    background: linear-gradient(135deg, #ff5f98, #ff2e7c);
+    background: linear-gradient(135deg, #ff5aa4, #ff2e7c);
     color: white;
     font-size: 1rem;
     cursor: pointer;
