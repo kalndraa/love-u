@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff1b6d 0%, #ff6b9d 25%, #c41e3a 50%, #ff1b6d 75%, #ff6b9d 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 50, 150, 0.2), transparent);
+}
+
+.menu-overlay {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(14px);
+    z-index: 10;
+    color: #fff;
+}
+
+.menu-panel {
+    width: min(100%, 420px);
+    text-align: center;
+}
+
+.menu-line {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: fadeInUp 0.75s ease forwards;
+    margin: 14px 0;
+    font-size: clamp(16px, 1.3vw, 24px);
+    line-height: 1.4;
+    letter-spacing: 0.03em;
+}
+
+#menuLine1 {
+    animation-delay: 0.2s;
+}
+
+#menuLine2 {
+    animation-delay: 1.2s;
+}
+
+#menuLine3 {
+    animation-delay: 2.3s;
+}
+
+#openButton {
+    opacity: 0;
+    transform: translateY(18px);
+    animation: fadeInUp 0.75s ease forwards;
+    animation-delay: 3.4s;
+    margin-top: 28px;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #ff5f98, #ff2e7c);
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 12px 30px rgba(255, 45, 135, 0.3);
+}
+
+.menu-overlay.menu-hidden {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Glow effect overlay */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 50% 50%, rgba(255, 100, 200, 0.1), transparent);
+    pointer-events: none;
+    animation: glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% {
+        opacity: 0.5;
+    }
+    50% {
+        opacity: 1;
+    }
+}
