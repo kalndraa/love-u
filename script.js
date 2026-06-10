@@ -15,7 +15,6 @@ const openButton = document.getElementById('openButton');
 
 class Particle {
     constructor(x, y, index) {
-        // Start from random position on screen
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
         this.targetX = x;
@@ -27,7 +26,7 @@ class Particle {
         this.opacity = 0;
         this.hue = 340;
         this.index = index;
-        this.delay = Math.random() * 2500; // Slower random stagger
+        this.delay = Math.random() * 2500;
     }
 
     update(time) {
@@ -35,11 +34,9 @@ class Particle {
             this.opacity = 0;
             return;
         }
-
-        // Fade in slower
+        
         this.opacity = Math.min(1, (time - this.delay) / 1000);
 
-        // Appear in place once ready
         this.x = this.targetX;
         this.y = this.targetY;
     }
@@ -60,19 +57,16 @@ class Particle {
     }
 }
 
-// Generate heart-filled shape with many points
 function getHeartPoints() {
     const points = [];
     const scale = Math.min(canvas.width, canvas.height) * 0.18;
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
 
-    // Create filled heart by sampling many points
     for (let t = 0; t < Math.PI * 2; t += 0.05) {
         const x = 16 * Math.sin(t) ** 3;
         const y = -(13 * Math.cos(t) - 5 * Math.cos(2 * t) - 2 * Math.cos(3 * t) - Math.cos(4 * t));
 
-        // Add points along the outline and fill
         for (let r = 0; r <= 1; r += 0.15) {
             points.push({
                 x: centerX + x * scale * r,
@@ -88,7 +82,6 @@ function initializeParticles() {
     particles.length = 0;
     const heartPoints = getHeartPoints();
     
-    // Create particle for each heart point
     for (let i = 0; i < heartPoints.length; i++) {
         const point = heartPoints[i];
         particles.push(new Particle(point.x, point.y, i));
@@ -98,7 +91,6 @@ function initializeParticles() {
 let startTime = Date.now();
 
 function animate() {
-    // Transparent canvas background so body gradient shows through
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     const elapsed = Date.now() - startTime;
@@ -171,7 +163,6 @@ openButton.addEventListener('click', () => {
     }, 900);
 });
 
-// Handle window resize
 window.addEventListener('resize', () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
@@ -181,5 +172,4 @@ window.addEventListener('resize', () => {
     }
 });
 
-// Start animation loop
 animate();
