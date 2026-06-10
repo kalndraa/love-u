@@ -109,7 +109,6 @@ canvas {
     }
 }
 
-/* Glow effect overlay */
 body::before {
     content: '';
     position: fixed;
